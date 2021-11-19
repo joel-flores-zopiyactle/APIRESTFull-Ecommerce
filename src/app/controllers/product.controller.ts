@@ -28,7 +28,8 @@ class ProductController {
 
         } catch (error) {
 
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 
@@ -46,7 +47,8 @@ class ProductController {
             res.status(200).json({ data: products })
 
         } catch (error) {
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 
@@ -63,7 +65,8 @@ class ProductController {
             res.status(200).json({ data: product })
 
         } catch (error) {
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
     }

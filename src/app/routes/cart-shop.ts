@@ -5,6 +5,6 @@ import { ShopCartCreate } from '../validators/shopcart';
 import { TokenValidation } from './../helpers/validateToken';
 
 
-router.post('/', TokenValidation, ShopCartCreate, shopCartContrller.createShopCart);
+router.post('/', ShopCartCreate, shopCartContrller.createShopCart);
 
 module.exports =  router

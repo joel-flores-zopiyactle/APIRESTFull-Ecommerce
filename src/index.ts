@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 const app: Application = express()
 import { conexion } from './config/mongodb'
-const port: number = 3000
+const port  =  process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())

@@ -2,28 +2,18 @@ import { Request, Response, NextFunction } from 'express'
 import { check } from 'express-validator'
 import { validateResult } from '../helpers/validateHelper'
 
- export const ProductCreate = [
+ export const ValidateAuth = [
 
-    check('name')
+    check('email')
         .exists()
         .not()
         .notEmpty()
-        .isString(),
-    check('category')
+        .isEmail(),
+    check('password')
         .exists()
         .not()
         .notEmpty()
-        .isString(),   
-    check('price')
-        .exists()
-        .not()
-        .notEmpty()
-        .isDecimal(),
-    check('urlImage')
-        .exists()
-        .not()
-        .notEmpty()
-        .isString(),             
+        .isString(),       
      
     (req: Request, res: Response, next: NextFunction) => {
         validateResult(req, res, next);

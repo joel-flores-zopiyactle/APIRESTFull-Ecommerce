@@ -27,18 +27,20 @@ class UserController {
             const userSave = await usuario.save();
 
             // TODO:Generamos un Token
-            const token:string = jwt.sign({_id: userSave._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
+            const token:string = jwt.sign({id: userSave._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
                 expiresIn: 60 * 60 * 24
             } );
             
             // TODO: Si todo es success se regresa los datos al usuario
-            res.status(201).header('auth-token', token).json({
-                data: userSave
+            res.status(201).json({
+                data: userSave,
+                token: token
             })
 
         } catch (error) {
 
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 
@@ -52,7 +54,7 @@ class UserController {
             const usuario = await modelUser.findOne({'email': req.body.email}, 'email password _id');
             
             // TODO: Valido si se encuntro resulatado a la bd con el email recibido
-            if(!usuario) { res.status(404).send( {data: 'Correo invalido'}) }
+            if(!usuario) { res.status(200).json( {data: 'Correo invalido'}) }
 
             // TODO: Valido si la contraseña es correcto 
             const verifyPassword:boolean = await usuario?.validatePassword(req.body.password) || false;
@@ -60,15 +62,19 @@ class UserController {
             if(!verifyPassword) { res.status(200).json({data: 'Contraseña invalido'})}
 
             // Token
-            const token:string = jwt.sign({_id: usuario?._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
+            const token:string = jwt.sign({id: usuario?._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
                 expiresIn: 60 * 60 * 24
             });
             // TODO: Si todo fue success devulevo los datos al usuario
-            res.status(200).header('auth-token', token).json({data: usuario})
+            res.status(200).json({
+                data: usuario,
+                token: token
+            })
 
         } catch (error) {
             
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 

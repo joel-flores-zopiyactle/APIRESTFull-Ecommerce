@@ -4,8 +4,8 @@ class ConexionDB {
 
     connectDB() {
 
-        const DB_URI:string = process.env.DB_URI || 'mongodb+srv://admin123:12345678joel@iventas.geh69.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
+        const DB_URI:string = process.env.DB_URI || 'mongodb+srv://admin123:12345678joel@iventas.geh69.mongodb.net/ApiEcommerce?retryWrites=true&w=majority'
+        //const DB_URI:string = "mongodb://localhost:27017/ecommerce"
         // const options = {
         //     useNewUrlParser: true,
         //     useUnifiedTopology: true,

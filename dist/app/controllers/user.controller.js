@@ -39,8 +39,9 @@ class UserController {
                     expiresIn: 60 * 60 * 24
                 });
                 // TODO: Si todo es success se regresa los datos al usuario
-                res.status(201).header('auth-token', token).json({
-                    data: userSave
+                res.status(201).json({
+                    data: userSave,
+                    token: token
                 });
             }
             catch (error) {
@@ -67,7 +68,10 @@ class UserController {
                     expiresIn: 60 * 60 * 24
                 });
                 // TODO: Si todo fue success devulevo los datos al usuario
-                res.status(200).header('auth-token', token).json({ data: usuario });
+                res.status(200).json({
+                    data: usuario,
+                    token: token
+                });
             }
             catch (error) {
                 console.log(error);

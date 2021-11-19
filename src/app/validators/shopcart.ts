@@ -3,12 +3,6 @@ import { check } from 'express-validator'
 import { validateResult } from '../helpers/validateHelper'
 
  export const ShopCartCreate = [
-
-    check('user_id')
-        .exists()
-        .not()
-        .notEmpty()
-        .isString(),
     check('shop_id')
         .exists()
         .not()

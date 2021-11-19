@@ -26,7 +26,8 @@ class ShopController  {
 
         } catch (error) {
 
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 
@@ -44,7 +45,8 @@ class ShopController  {
             res.status(200).json({ data: shops })
 
         } catch (error) {
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 
@@ -65,7 +67,8 @@ class ShopController  {
 
         } catch (error) {
 
-            console.log(error);
+            res.status(500)
+            res.send(error)
             
         }
 

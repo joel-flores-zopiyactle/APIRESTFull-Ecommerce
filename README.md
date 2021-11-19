@@ -54,6 +54,12 @@ http://localhost:3000/api/1.0/product
 }
 ```
 
+__Obtener todos los productos__
+
+```
+https://apiecommerce-2021.herokuapp.com/api/1.0/product
+```
+
 _Registrar un  carrito de compra (Recibe un Token para registar una compra)_
 
 ```
@@ -69,7 +75,7 @@ http://localhost:3000/api/1.0/cart-shop
 ```
 
 
-## Aplicacion en linea 🚀
+## Aplicación en linea 🚀
 ### Registrar un nuevo producto 📋
 
 _Registrar un nuevo usuario_

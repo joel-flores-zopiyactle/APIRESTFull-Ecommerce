@@ -2,6 +2,42 @@
 
 
 ## Comenzando 🚀
+
+### Link de la aplicacion Online
+
+__ https://compassionate-minsky-8b02f9.netlify.app/ __
+
+_Crear cuenta con el siguiente endpoint_
+
+```
+https://apiecommerce-2021.herokuapp.com/api/1.0/user/singup
+{
+    "name": "Joel",
+    "lastName":"Flores Zopiyactle",
+    "age": 25,
+    "address":"Mixtla de Altamirano",
+    "country":"Mexico",
+    "email":"joelfzop@gmail.com",
+    "password":"12345678",
+    "phone": 2781141310
+}
+
+```
+
+_Registrar un nuevo producto
+
+```
+https://apiecommerce-2021.herokuapp.com/api/1.0/product
+
+{
+  "name": "Mouse",
+  "category": "Electronica",
+  "price": 2300,
+  "urlImage": "www.google.com/img/laptop.png"
+}
+```
+
+
 ### Lista de endpoints de manera Local 📋
 
 _Registrar un nuevo usuario_
@@ -74,19 +110,3 @@ http://localhost:3000/api/1.0/cart-shop
 
 ```
 
-
-## Aplicación en linea 🚀
-### Registrar un nuevo producto 📋
-
-_Registrar un nuevo usuario_
-
-```
-https://apiecommerce-2021.herokuapp.com/api/1.0/user/singup
-
-{
-  "name": "Mouse",
-  "category": "Electronica",
-  "price": 2300,
-  "urlImage": "www.google.com/img/laptop.png"
-}
-```

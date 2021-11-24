@@ -8,37 +8,17 @@ import { validateResult } from '../helpers/validateHelper'
         .exists()
         .not()
         .notEmpty()
-        .isString(),
-    check('lastName')
-        .exists()
-        .not()
-        .notEmpty()
-        .isString(),   
-    check('age')
-        .exists()
-        .not()
-        .notEmpty()
-        .isNumeric(),
-    check('address')
-        .exists()
-        .not()
-        .notEmpty()
         .isString(),    
     check('email')
         .exists()
         .not()
         .notEmpty()
         .isEmail(),  
-    check('address')
+    check('password')
         .exists()
         .not()
         .notEmpty()
-        .isString(), 
-    check('phone')
-        .exists()
-        .not()
-        .notEmpty()
-        .isNumeric(),         
+        .isString(),        
      
     (req: Request, res: Response, next: NextFunction) => {
         validateResult(req, res, next);

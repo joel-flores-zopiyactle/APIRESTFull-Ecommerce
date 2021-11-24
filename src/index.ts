@@ -18,5 +18,5 @@ app.use('/api/1.0', require('./app/routes')) //Obtiene el index.js (por defecto 
 conexion.connectDB();
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })

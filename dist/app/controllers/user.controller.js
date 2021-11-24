@@ -22,30 +22,25 @@ class UserController {
                 //TODO: Se crea el modelo
                 const usuario = new user_1.default({
                     name: req.body.name,
-                    lastName: req.body.lastName,
-                    age: req.body.age,
-                    address: req.body.address,
-                    country: req.body.country,
                     email: req.body.email,
                     password: req.body.password,
-                    phone: req.body.phone
                 });
                 // Encriptamos la contraseña
                 usuario.password = yield usuario.encryptPassword(req.body.password);
                 // TODO: Se gurda el usuario a la BD
                 const userSave = yield usuario.save();
                 // TODO:Generamos un Token
-                const token = jsonwebtoken_1.default.sign({ _id: userSave._id }, process.env.TOKEN_SECRET || 'tokenecommerce', {
+                const token = jsonwebtoken_1.default.sign({ id: userSave._id }, process.env.TOKEN_SECRET || 'api_2021', {
                     expiresIn: 60 * 60 * 24
                 });
                 // TODO: Si todo es success se regresa los datos al usuario
                 res.status(201).json({
-                    data: userSave,
                     token: token
                 });
             }
             catch (error) {
-                console.log(error);
+                res.status(500);
+                res.send(error);
             }
         });
     }
@@ -53,10 +48,10 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 // TODO: Se consulta el usuario por "email" si todo es exitso se devuelve los datos (email, password, _id)
-                const usuario = yield user_1.default.findOne({ 'email': req.body.email }, 'email password _id');
+                const usuario = yield user_1.default.findOne({ 'email': req.body.email }, 'email password');
                 // TODO: Valido si se encuntro resulatado a la bd con el email recibido
                 if (!usuario) {
-                    res.status(404).send({ data: 'Correo invalido' });
+                    res.status(200).json({ data: 'Correo invalido' });
                 }
                 // TODO: Valido si la contraseña es correcto 
                 const verifyPassword = (yield (usuario === null || usuario === void 0 ? void 0 : usuario.validatePassword(req.body.password))) || false;
@@ -64,20 +59,21 @@ class UserController {
                     res.status(200).json({ data: 'Contraseña invalido' });
                 }
                 // Token
-                const token = jsonwebtoken_1.default.sign({ _id: usuario === null || usuario === void 0 ? void 0 : usuario._id }, process.env.TOKEN_SECRET || 'tokenecommerce', {
+                const token = jsonwebtoken_1.default.sign({ id: usuario === null || usuario === void 0 ? void 0 : usuario._id }, process.env.TOKEN_SECRET || 'api_2021', {
                     expiresIn: 60 * 60 * 24
                 });
                 // TODO: Si todo fue success devulevo los datos al usuario
                 res.status(200).json({
-                    data: usuario,
                     token: token
                 });
             }
             catch (error) {
-                console.log(error);
+                res.status(500);
+                res.send(error);
             }
         });
     }
-    singOut(req, res) { }
+    getUser(req, res) {
+    }
 }
 exports.userController = new UserController();

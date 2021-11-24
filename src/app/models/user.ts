@@ -4,12 +4,8 @@ import bcrypt from 'bcryptjs'
 // Interface del usuario
 export interface IUser extends Document {
     name:string;
-    lastName:string;
-    age:number;
-    address:string;
     email:string;
     password:string;
-    phone:number;
     encryptPassword(password:string): Promise<string>;
     validatePassword(password:string): Promise<boolean>;
 }
@@ -21,22 +17,6 @@ const userSchema = new Schema({
         required: true,
         min: 3
     }, 
-    lastName: {
-        type: String,
-        required: true
-    },
-    age:   {
-        type: Number,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    country: { 
-        type:String,
-        required: true
-     },
     email: {
         type:String,
         unique: true,
@@ -46,9 +26,6 @@ const userSchema = new Schema({
         type:String,
         required: true
     },
-    phone: {
-        type:Number
-    }
 },
 {
     timestamps: true,

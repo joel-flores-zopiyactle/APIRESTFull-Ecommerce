@@ -8,6 +8,6 @@ import { ValidateAuth } from '../validators/valideAuth';
 
 router.post('/singup', ValidateCreate, userController.singUp);
 router.post('/singin', ValidateAuth, userController.singIn);
-router.get('/singout', userController.singOut);
+router.get('/:id', userController.getUser);
 
 module.exports =  router

@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShopCreate = void 0;
+exports.ValidateAuth = void 0;
 const express_validator_1 = require("express-validator");
 const validateHelper_1 = require("../helpers/validateHelper");
-exports.ShopCreate = [
-    (0, express_validator_1.check)('name')
+exports.ValidateAuth = [
+    (0, express_validator_1.check)('email')
         .exists()
         .not()
         .notEmpty()
-        .isString(),
-    (0, express_validator_1.check)('address')
+        .isEmail(),
+    (0, express_validator_1.check)('password')
         .exists()
         .not()
         .notEmpty()

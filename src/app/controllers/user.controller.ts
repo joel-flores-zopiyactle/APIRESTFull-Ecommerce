@@ -11,13 +11,8 @@ class UserController {
             //TODO: Se crea el modelo
             const usuario: IUser = new modelUser({
                 name: req.body.name,
-                lastName: req.body.lastName,
-                age: req.body.age,
-                address: req.body.address,
-                country: req.body.country,
                 email: req.body.email,
                 password: req.body.password,
-                phone:req.body.phone  
             });
 
             // Encriptamos la contraseña
@@ -27,13 +22,12 @@ class UserController {
             const userSave = await usuario.save();
 
             // TODO:Generamos un Token
-            const token:string = jwt.sign({id: userSave._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
+            const token:string = jwt.sign({id: userSave._id}, process.env.TOKEN_SECRET || 'api_2021', {
                 expiresIn: 60 * 60 * 24
             } );
             
             // TODO: Si todo es success se regresa los datos al usuario
             res.status(201).json({
-                data: userSave,
                 token: token
             })
 
@@ -51,7 +45,7 @@ class UserController {
         try {
             
             // TODO: Se consulta el usuario por "email" si todo es exitso se devuelve los datos (email, password, _id)
-            const usuario = await modelUser.findOne({'email': req.body.email}, 'email password _id');
+            const usuario = await modelUser.findOne({'email': req.body.email}, 'email password');
             
             // TODO: Valido si se encuntro resulatado a la bd con el email recibido
             if(!usuario) { res.status(200).json( {data: 'Correo invalido'}) }
@@ -62,12 +56,11 @@ class UserController {
             if(!verifyPassword) { res.status(200).json({data: 'Contraseña invalido'})}
 
             // Token
-            const token:string = jwt.sign({id: usuario?._id}, process.env.TOKEN_SECRET || 'tokenecommerce', {
+            const token:string = jwt.sign({id: usuario?._id}, process.env.TOKEN_SECRET || 'api_2021', {
                 expiresIn: 60 * 60 * 24
             });
             // TODO: Si todo fue success devulevo los datos al usuario
             res.status(200).json({
-                data: usuario,
                 token: token
             })
 
@@ -80,7 +73,11 @@ class UserController {
 
     }
 
-    public singOut(req:Request, res: Response):void {}
+    public getUser(req:Request, res: Response):void {
+
+
+
+    }
 
 }
 

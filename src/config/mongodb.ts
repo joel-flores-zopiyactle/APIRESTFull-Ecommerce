@@ -4,14 +4,7 @@ class ConexionDB {
 
     connectDB() {
 
-        const DB_URI:string = process.env.DB_URI || 'mongodb://localhost:27017/ecommerce';
-        //const DB_URI:string = "mongodb://localhost:27017/ecommerce"
-        // const options = {
-        //     useNewUrlParser: true,
-        //     useUnifiedTopology: true,
-        //     useCreateIndex: true
-        // };
-
+        const DB_URI:string = process.env.DB_URI || 'mongodb://localhost:27017/api-user';
         mongoose.connect(DB_URI)
         .then(res => {
             console.log('**** CONEXION ESTABLECIDA A MONGODB ****');

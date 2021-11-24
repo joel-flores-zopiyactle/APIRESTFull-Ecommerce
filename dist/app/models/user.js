@@ -21,22 +21,6 @@ const userSchema = new mongoose_1.Schema({
         required: true,
         min: 3
     },
-    lastName: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         unique: true,
@@ -46,9 +30,6 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    phone: {
-        type: Number
-    }
 }, {
     timestamps: true,
     versionKey: false

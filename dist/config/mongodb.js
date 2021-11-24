@@ -7,12 +7,7 @@ exports.conexion = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 class ConexionDB {
     connectDB() {
-        const DB_URI = process.env.DB_URI || 'mongodb+srv://admin123:12345678joel@iventas.geh69.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-        // const options = {
-        //     useNewUrlParser: true,
-        //     useUnifiedTopology: true,
-        //     useCreateIndex: true
-        // };
+        const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/api-user';
         mongoose_1.default.connect(DB_URI)
             .then(res => {
             console.log('**** CONEXION ESTABLECIDA A MONGODB ****');
